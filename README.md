@@ -35,16 +35,17 @@ It'll print a URL like http://localhost:5173, open that in your browser
 
 ## Put it online (free)
 
+This deploys to GitHub Pages with the `gh-pages` package:
+
 ```bash
-npm run build    # creates a "dist" folder
+npm run deploy
 ```
 
-Then either:
+That builds into `dist` and pushes it to the `gh-pages` branch. The live site is
+https://quangshuynh.github.io/songsketch/
 
-- **Netlify** (easiest): go to app.netlify.com, drag the `dist` folder onto the
-  page. You get a live URL instantly
-- **Vercel**: push this folder to a GitHub repo, then import it at vercel.com
-  It builds and deploys on every push
+The `base` in `vite.config.js` has to match the repo name (`/songsketch/`), or
+the page loads but every asset 404s
 
 ## Where to edit
 
