@@ -111,7 +111,10 @@ export const CSS = `
 .ss-row { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border-radius: 14px; border: 1px solid #262436; background: rgba(255,255,255,.015); flex-wrap: wrap; }
 .ss-row:hover { border-color: #3a3752; }
 .ss-row-main { flex: 1 1 200px; min-width: 0; text-align: left; background: transparent; border: 0; padding: 0; color: inherit; display: flex; flex-direction: column; gap: 5px; }
+.ss-row-titleline { display: flex; align-items: center; gap: 9px; min-width: 0; }
 .ss-row-title { font-family: 'Fraunces', serif; font-size: 17px; color: #ece8e0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ss-badge { flex: none; font-size: 9.5px; font-weight: 600; letter-spacing: 1.1px; text-transform: uppercase;
+  color: #f0c078; border: 1px solid rgba(240,192,120,.45); background: rgba(224,164,88,.12); border-radius: 999px; padding: 3px 9px; }
 .ss-row-main:hover .ss-row-title { color: #f0b862; }
 .ss-row-meta { font-size: 11.5px; color: #6f6c82; letter-spacing: .2px; }
 .ss-row-btns { display: flex; gap: 6px; flex-wrap: wrap; }

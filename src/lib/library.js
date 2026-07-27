@@ -26,9 +26,11 @@ const write = (songs) => {
 // Only the musical fields: never carry another row's id or timestamps along.
 const songFields = ({ title, bpm, progression, sections }) => ({ title, bpm, progression, sections });
 
-const entry = (song) => {
+// `extra` holds row metadata that isn't part of the song, e.g. { demo: true }.
+// It lives outside songFields so editing a song can never drop it.
+const entry = (song, extra = {}) => {
   const now = Date.now();
-  return { ...songFields(song), id: uid(), createdAt: now, updatedAt: now };
+  return { ...songFields(song), ...extra, id: uid(), createdAt: now, updatedAt: now };
 };
 
 /** One-time lift of the old single-song save into the library. */
@@ -53,7 +55,9 @@ export function listSongs() {
   return songs
     .map((s) => {
       const clean = normalizeSong(s);
-      return clean ? { ...clean, id: s.id || uid(), createdAt: s.createdAt || 0, updatedAt: s.updatedAt || 0 } : null;
+      return clean
+        ? { ...clean, id: s.id || uid(), demo: !!s.demo, createdAt: s.createdAt || 0, updatedAt: s.updatedAt || 0 }
+        : null;
     })
     .filter(Boolean)
     .sort((a, b) => b.updatedAt - a.updatedAt);
@@ -62,11 +66,14 @@ export function listSongs() {
 export const getSong = (id) => listSongs().find((s) => s.id === id) || null;
 
 /** Insert a song and return the stored entry (with its new id). */
-export function addSong(song) {
-  const row = entry(song);
+export function addSong(song, extra) {
+  const row = entry(song, extra);
   write([row, ...listSongs()]);
   return row;
 }
+
+/** The one demo row, if it's still around. Deleting it lets a fresh one be made. */
+export const findDemo = () => listSongs().find((s) => s.demo) || null;
 
 /** Save edits to an existing sketch. No-op if the id is gone (e.g. deleted in another tab). */
 export function updateSong(id, song) {
