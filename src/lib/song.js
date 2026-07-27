@@ -21,32 +21,38 @@ export const blankSection = () => ({
   cue: "Describe how to sing this part.", lyric: ["", ""],
 });
 
-export const DEFAULT_SONG = {
-  title: "I Just Wanna Feel Alive",
-  bpm: 74,
-  progression: ["Am", "F", "C", "G"],
+// The example everyone sees, so it ships nothing private and nothing owned.
+// "The House of the Rising Sun" is a traditional folk ballad in the public
+// domain, and chord progressions aren't copyrightable, so the chords, shape,
+// and cues below are free to publish. The lyric lines are left as placeholders
+// on purpose: the wording most people know is The Animals' 1964 arrangement,
+// which is still under copyright. Type your own words over it.
+export const DEMO_SONG = {
+  title: "House of the Rising Sun (traditional)",
+  bpm: 72,
+  progression: ["Am", "C", "D", "F", "Am", "C", "E", "E"],
   sections: [
-    { id: "s1", label: "Verse 1", tag: "the ache", warmth: 0.0, pluck: false, bass: false, kick: false, hat: false, kickFour: false,
-      cue: "Just voice + one instrument. Stay low, almost talking.",
-      lyric: ["Trapped inside this box of resentment", "These feelings spiral in my brain", "…oo oh oh, ooo oh oh oh…", "Growing up feels so long"] },
-    { id: "s2", label: "Verse 2", tag: "the isolation", warmth: 0.15, pluck: true, bass: false, kick: false, hat: false, kickFour: false,
-      cue: "Fingerpicking comes in. Keep the melody flat and close.",
-      lyric: ["No missed calls, phone's been quiet a while", "Same four walls, same afternoon light", "Been staring at the ceiling half the night", "There's a door right there but I never go"] },
-    { id: "s3", label: "Pre-chorus", tag: "the pressure", warmth: 0.28, pluck: true, bass: true, kick: false, hat: false, kickFour: false,
-      cue: "Tension builds. Lean into the words a little more.",
-      lyric: ["Choking on my words, feeling so conflicted", "Everything I wanna say", "Just dies before I said it"] },
-    { id: "s4", label: "Chorus 1", tag: "yearning", warmth: 0.4, pluck: true, bass: true, kick: false, hat: false, kickFour: false,
-      cue: "The hook, but held back. Sung low and aching.",
-      lyric: ["I just wanna feel alive", "This feeling I have trapped inside", "I just wanna feel alive", "Been holding my breath, don't know why"] },
-    { id: "s5", label: "Verse 3", tag: "the bottom", warmth: 0.22, pluck: true, bass: false, kick: false, hat: false, kickFour: false,
-      cue: "Strip it back. The most vulnerable moment, barely there.",
-      lyric: ["Mother shouldn't have kept me", "Like she gave away my brother", "Been carrying that quiet", "Trying not to become her"] },
-    { id: "s6", label: "Bridge", tag: "the turn", warmth: 0.65, pluck: true, bass: true, kick: true, hat: false, kickFour: false,
-      cue: "It lifts. Drums enter. Start opening your voice up.",
-      lyric: ["But the lock was never on the outside", "It's my hands, it's my hands this time", "I can't undo it, I can just decide", "To breathe, to move, to be alive"] },
-    { id: "s7", label: "Chorus 2", tag: "release", warmth: 1.0, pluck: true, bass: true, kick: true, hat: true, kickFour: true,
-      cue: "Let it soar. Full voice. Windows down, wide awake.",
-      lyric: ["I just wanna feel alive", "And this feeling isn't trapped inside", "I just wanna feel alive", "Windows down, I'm wide awake tonight"] },
+    { id: "s1", label: "Verse 1", tag: "the room", warmth: 0.0, pluck: false, bass: false, kick: false, hat: false, kickFour: false,
+      cue: "Just voice and the pad. Almost spoken, let each line sit.",
+      lyric: ["Verse 1 goes here", "Eight bars, one line per chord pair", "Hum it first, words later"] },
+    { id: "s2", label: "Verse 2", tag: "the telling", warmth: 0.14, pluck: true, bass: false, kick: false, hat: false, kickFour: false,
+      cue: "Fingerpicking enters. Same restraint, a little more air.",
+      lyric: ["Verse 2 goes here", "Keep the melody low and close"] },
+    { id: "s3", label: "Verse 3", tag: "the warning", warmth: 0.28, pluck: true, bass: true, kick: false, hat: false, kickFour: false,
+      cue: "Bass underneath now. Lean into the story.",
+      lyric: ["Verse 3 goes here", "Push a little harder on the line ends"] },
+    { id: "s4", label: "Instrumental", tag: "the turn", warmth: 0.45, pluck: true, bass: true, kick: false, hat: false, kickFour: false,
+      cue: "No words. This is the solo. Hum a countermelody over the loop.",
+      lyric: [""] },
+    { id: "s5", label: "Verse 4", tag: "back down", warmth: 0.3, pluck: true, bass: false, kick: false, hat: false, kickFour: false,
+      cue: "Strip it back so the last build has somewhere to climb from.",
+      lyric: ["Verse 4 goes here", "Quietest moment, barely there"] },
+    { id: "s6", label: "Build", tag: "rising", warmth: 0.68, pluck: true, bass: true, kick: true, hat: false, kickFour: false,
+      cue: "Drums enter. Start opening your voice up.",
+      lyric: ["The turn goes here", "Let the phrasing stretch"] },
+    { id: "s7", label: "Final verse", tag: "full", warmth: 1.0, pluck: true, bass: true, kick: true, hat: true, kickFour: true,
+      cue: "Everything in. Full voice, top of your range.",
+      lyric: ["Last verse goes here", "Sing it like the first one, but wide open"] },
   ],
 };
 

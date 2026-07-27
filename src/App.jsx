@@ -2,8 +2,8 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { CSS } from "./styles.js";
 import Home from "./components/Home.jsx";
 import Player from "./components/Player.jsx";
-import { listSongs, getSong, addSong, updateSong, deleteSong, duplicateSong } from "./lib/library.js";
-import { DEFAULT_SONG, starterSong, copyOf, normalizeSong } from "./lib/song.js";
+import { listSongs, getSong, addSong, updateSong, deleteSong, duplicateSong, findDemo } from "./lib/library.js";
+import { DEMO_SONG, starterSong, copyOf, normalizeSong } from "./lib/song.js";
 import { readShareHash, clearShareHash, decodeSong, payloadFromText } from "./lib/share.js";
 
 const justTheSong = ({ title, bpm, progression, sections }) => ({ title, bpm, progression, sections });
@@ -63,8 +63,8 @@ export default function App() {
     setCurrent({ id, song });
   };
 
-  const openNew = (song) => {
-    const row = addSong(song);
+  const openNew = (song, extra) => {
+    const row = addSong(song, extra);
     setSongs(listSongs());
     open(row.id);
   };
@@ -86,6 +86,13 @@ export default function App() {
 
   const remove = (id) => { deleteSong(id); setSongs(listSongs()); };
   const duplicate = (id) => { duplicateSong(id); setSongs(listSongs()); };
+
+  /** Reopen the one saved demo rather than piling up a new copy each time. */
+  const openDemo = () => {
+    const existing = findDemo();
+    if (existing) return open(existing.id);
+    openNew(copyOf(DEMO_SONG), { demo: true });
+  };
 
   const acceptIncoming = () => {
     const song = incoming;
@@ -129,7 +136,7 @@ export default function App() {
           onAcceptIncoming={acceptIncoming}
           onDismissIncoming={dismissIncoming}
           onNew={() => openNew(starterSong())}
-          onDemo={() => openNew(copyOf(DEFAULT_SONG))}
+          onDemo={openDemo}
           onOpen={open}
           onRename={rename}
           onDuplicate={duplicate}

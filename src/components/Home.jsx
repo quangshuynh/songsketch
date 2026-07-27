@@ -118,7 +118,10 @@ export default function Home({
                 ) : (
                   <>
                     <button className="ss-row-main" onClick={() => onOpen(s.id)}>
-                      <span className="ss-row-title">{s.title}</span>
+                      <span className="ss-row-titleline">
+                        <span className="ss-row-title">{s.title}</span>
+                        {s.demo && <span className="ss-badge">demo song</span>}
+                      </span>
                       <span className="ss-row-meta">{summarize(s)} · {when(s.updatedAt)}</span>
                     </button>
                     <div className="ss-row-btns">

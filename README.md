@@ -33,7 +33,7 @@ npm run dev      # starts a local server
 
 It'll print a URL like http://localhost:5173, open that in your browser
 
-## Put it online (free)
+## Put it online 
 
 This deploys to GitHub Pages with the `gh-pages` package:
 
@@ -55,7 +55,7 @@ the page loads but every asset 404s
   Tone.js audio setup
 - `src/lib/chords.js`: the chord library. Add more by giving each a name,
   `notes` (for the pad), a `root` (for the bass), and an `arp` (for the picking)
-- `src/lib/song.js`: `DEFAULT_SONG` (the demo), the blank starter, and the
+- `src/lib/song.js`: `DEMO_SONG` (the demo), the blank starter, and the
   validation every incoming song passes through
 - `src/lib/library.js`: saving/loading songs in localStorage
 - `src/lib/share.js`: packing a song into a link and back out
