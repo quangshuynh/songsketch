@@ -9,7 +9,7 @@ be there when you come back
 
 ## Run it locally
 
-You need Node.js installed (https://nodejs.org — the LTS version is fine).
+You need Node.js installed (https://nodejs.org - the LTS version is fine).
 
 Open a terminal in this folder, then:
 
