@@ -1,16 +1,49 @@
-# React + Vite
+# SongSketch
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A customizable "hum over it" backing-track app. Edit sections, lyrics, chords,
+tempo, and arrangement live. The app plays a chord loop that fills out from
+sparse (trapped) to full (alive) so you can find melodies over it
 
-Currently, two official plugins are available:
+Your edits save automatically to your browser (localStorage), so they'll still
+be there when you come back
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run it locally
 
-## React Compiler
+You need Node.js installed (https://nodejs.org — the LTS version is fine).
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Open a terminal in this folder, then:
 
-## Expanding the Oxlint configuration
+```bash
+npm install      # downloads React, Tone.js, Vite (one time)
+npm run dev      # starts a local server
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+It'll print a URL like http://localhost:5173 — open that in your browser
+
+## Put it online (free)
+
+```bash
+npm run build    # creates a "dist" folder
+```
+
+Then either:
+
+- **Netlify** (easiest): go to app.netlify.com, drag the `dist` folder onto the
+  page. You get a live URL instantly
+- **Vercel**: push this folder to a GitHub repo, then import it at vercel.com
+  It builds and deploys on every push
+
+## Where to edit
+
+Everything lives in `src/App.jsx`. Notable spots:
+
+- `DEFAULT_SONG`: the starting song (title, tempo, chords, sections).
+- `CHORDS`: the chord library. Add more by giving each a name, `notes`
+  (for the pad), a `root` (for the bass), and an `arp` (for the picking)
+- The `<style>` block near the bottom (`CSS`) controls all the visuals
+
+## Notes
+
+- The sounds are basic synths, they're for finding the *shape* and melody, not
+  for a finished recording. Real voices and a real guitar are what make it indie
+- Audio starts only after you tap Start (browsers require a tap before playing)
