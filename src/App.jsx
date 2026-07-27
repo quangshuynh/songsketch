@@ -40,10 +40,10 @@ const DEFAULT_SONG = {
       cue: "Tension builds. Lean into the words a little more.",
       lyric: ["Choking on my words, feeling so conflicted", "Everything I wanna say", "Just dies before I said it"] },
     { id: "s4", label: "Chorus 1", tag: "yearning", warmth: 0.4, pluck: true, bass: true, kick: false, hat: false, kickFour: false,
-      cue: "The hook — but held back. Sung low and aching.",
+      cue: "The hook, but held back. Sung low and aching.",
       lyric: ["I just wanna feel alive", "This feeling I have trapped inside", "I just wanna feel alive", "Been holding my breath, don't know why"] },
     { id: "s5", label: "Verse 3", tag: "the bottom", warmth: 0.22, pluck: true, bass: false, kick: false, hat: false, kickFour: false,
-      cue: "Strip it back. The most vulnerable moment — barely there.",
+      cue: "Strip it back. The most vulnerable moment, barely there.",
       lyric: ["Mother shouldn't have kept me", "Like she gave away my brother", "Been carrying that quiet", "Trying not to become her"] },
     { id: "s6", label: "Bridge", tag: "the turn", warmth: 0.65, pluck: true, bass: true, kick: true, hat: false, kickFour: false,
       cue: "It lifts. Drums enter. Start opening your voice up.",
@@ -234,7 +234,7 @@ export default function App() {
       setSong({ title: parsed.title || "Untitled", bpm: parsed.bpm || 74, progression: parsed.progression, sections: parsed.sections });
       barRef.current = 0; setBar(0);
       setIo((s) => ({ ...s, msg: "Loaded ✓" }));
-    } catch (e) { setIo((s) => ({ ...s, msg: "Couldn't read that — check the JSON." })); }
+    } catch (e) { setIo((s) => ({ ...s, msg: "Couldn't read that. Check the JSON." })); }
   };
 
   return (
@@ -244,7 +244,7 @@ export default function App() {
       <header className="ss-head">
         <div className="ss-kicker">song sketch · {song.progression.join(" ")} · {song.bpm} bpm</div>
         <h1 className="ss-title">{song.title || "Untitled"}</h1>
-        <div className="ss-sub">a scratch track to hum over — the skeleton, not the finished song</div>
+        <div className="ss-sub">a scratch track to hum over, the skeleton, not the finished song</div>
       </header>
 
       {/* breathing visual */}
@@ -373,7 +373,7 @@ export default function App() {
               </label>
 
               <div className="ss-field">
-                <span>Intensity · {Math.round(s.warmth * 100)}% (cold/trapped → warm/alive)</span>
+                <span>Intensity · {Math.round(s.warmth * 100)}% (cold/trapped to warm/alive)</span>
                 <input type="range" min="0" max="1" step="0.05" value={s.warmth}
                   onChange={(e) => patchSection(s.id, { warmth: Number(e.target.value) })} />
               </div>
@@ -399,21 +399,21 @@ export default function App() {
             {io.open && (
               <div className="ss-io">
                 <textarea rows={6} value={io.text} onChange={(e) => setIo((s) => ({ ...s, text: e.target.value }))}
-                  placeholder="Your song config (JSON) appears here — copy it to keep, or paste one in and Load." />
+                  placeholder="Your song config (JSON) appears here. Copy it to keep, or paste one in and Load." />
                 <div className="ss-io-row">
                   <button className="ss-btn ss-btn-ghost" onClick={loadJSON}>Load this config</button>
                   {io.msg && <span className="ss-io-msg">{io.msg}</span>}
                 </div>
               </div>
             )}
-            <div className="ss-hint">No auto-save — copy the exported text somewhere safe to keep your version.</div>
+            <div className="ss-hint">No auto-save. Copy the exported text somewhere safe to keep your version.</div>
           </div>
         </div>
       )}
 
       <footer className="ss-foot">
         Loops forever for practice. Hum nonsense over it first, real words later. The tones are basic
-        synths — judge the <em>shape</em> (sparse → full), not the texture. Your actual voices and a real
+        synths, so judge the <em>shape</em> (sparse to full), not the texture. Your actual voices and a real
         guitar are what make it indie.
       </footer>
     </div>
